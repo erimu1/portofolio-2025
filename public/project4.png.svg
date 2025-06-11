@@ -1,0 +1,5 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#5a7bff" />
+  <text x="300" y="200" font-family="Arial" font-size="32" fill="white" text-anchor="middle" dominant-baseline="middle">Task Manager</text>
+  <text x="300" y="250" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">Project Thumbnail</text>
+</svg>
