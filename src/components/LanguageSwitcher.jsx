@@ -30,7 +30,6 @@ const LanguageSwitcher = () => {
     >
       <div className="toggle-wrapper">
         <div className="icon-container">
-          <span className="language-icon">{language === 'en' ? '🇬🇧' : '🇳🇱'}</span>
           <span className="language-text">{language === 'en' ? 'EN' : 'NL'}</span>
         </div>
       </div>

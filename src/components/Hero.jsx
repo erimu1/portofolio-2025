@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Hero.css';
 import '../styles/3d-card.css';
 // Placeholder image - replace with your actual profile photo
@@ -10,6 +11,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [nameText, setNameText] = useState('Erim Uludag');
   const sectionRef = useRef(null);
+  const { t } = useLanguage();
   
   useEffect(() => {
     // Trigger animation after component mounts
@@ -20,12 +22,25 @@ const Hero = () => {
     
     if (!isMobile) {
       // Text scramble effect for name - smoother letter-by-letter transition
+      // Only use 'Software Developer' for animation, keep 'Erim Uludag' static
       const texts = ['Erim Uludag', 'Software Developer'];
       let currentIndex = 0;
       let interval = null;
       
       // Function to perform letter-by-letter text animation
       const animateText = () => {
+        // Skip animation for 'Erim Uludag' to remove hue effect
+        if (currentIndex === 0) {
+          setNameText('Erim Uludag');
+          
+          // Wait before starting the next word
+          setTimeout(() => {
+            currentIndex = (currentIndex + 1) % texts.length;
+            animateText();
+          }, 2000);
+          return;
+        }
+        
         const targetText = texts[currentIndex];
         const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let charIndex = 0;
@@ -87,25 +102,97 @@ const Hero = () => {
       
       {/* Enhanced decorative elements - hidden on mobile */}
       <div className="hero-background" style={{ zIndex: 11 }}>
-        {/* Box outlines */}
-        <div className="bg-box-outline bg-box-1"></div>
-        <div className="bg-box-outline bg-box-2"></div>
-        <div className="bg-box-outline bg-box-3"></div>
-        <div className="bg-box-outline bg-box-4"></div>
-        <div className="bg-box-outline bg-box-5"></div>
-        <div className="bg-box-outline bg-box-6"></div>
+        {/* Box outlines with parallax effect */}
+        <motion.div 
+          className="bg-box-outline bg-box-1"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, -10, 0], y: [0, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="bg-box-outline bg-box-2"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, 15, 0], y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="bg-box-outline bg-box-3"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, -8, 0], y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="bg-box-outline bg-box-4"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, 12, 0], y: [0, -8, 0] }}
+          transition={{ repeat: Infinity, duration: 17, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="bg-box-outline bg-box-5"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, -15, 0], y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 19, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="bg-box-outline bg-box-6"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, 10, 0], y: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
+        ></motion.div>
         
-        {/* Additional modern shapes with improved visibility */}
-        <div className="modern-shape shape-circle"></div>
-        <div className="modern-shape shape-donut"></div>
-        <div className="modern-shape shape-triangle"></div>
-        <div className="modern-shape shape-square"></div>
-        <div className="modern-shape shape-plus"></div>
+        {/* Modern Shapes */}
+        <motion.div 
+          className="modern-shape shape-circle"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+        />
+        <motion.div 
+          className="modern-shape shape-donut"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.4, duration: 0.5 }}
+        />
+        <motion.div 
+          className="modern-shape shape-square"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.8, duration: 0.5 }}
+        />
+        <motion.div 
+          className="modern-shape shape-triangle"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.6, duration: 0.5 }}
+        />
+        <motion.div 
+          className="modern-shape shape-plus"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.0, duration: 0.5 }}
+        />
         
-        {/* Gradient orbs with enhanced glow */}
-        <div className="gradient-orb orb-1"></div>
-        <div className="gradient-orb orb-2"></div>
-        <div className="gradient-orb orb-3"></div>
+        {/* Remove all skill icon shapes */}
+        
+        {/* Gradient orbs with enhanced glow and parallax */}
+        <motion.div 
+          className="gradient-orb orb-1"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, -20, 0], y: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="gradient-orb orb-2"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, 25, 0], y: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 25, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className="gradient-orb orb-3"
+          initial={{ x: 0, y: 0 }}
+          animate={{ x: [0, -15, 0], y: [0, 20, 0] }}
+          transition={{ repeat: Infinity, duration: 22, ease: "easeInOut" }}
+        ></motion.div>
       </div>
       
       {/* Main content */}
@@ -136,7 +223,6 @@ const Hero = () => {
       <div className="scrolling-words-container">
         <div className="scrolling-words-box">
           <ul className="scrolling-words-list">
-            <li>development</li>
             <li>design</li>
             <li>interaction</li>
             <li>animation</li>
@@ -148,17 +234,31 @@ const Hero = () => {
       {/* Background grid pattern */}
       <div className="background-grid-pattern"></div>
       
-      {/* Scroll indicator */}
+      {/* Modern scroll wheel indicator */}
       <motion.div 
         className="scroll-indicator" 
         onClick={scrollToContent}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        whileHover={{ y: 5 }}
+        whileHover={{ y: 5, scale: 1.1 }}
       >
-        <div className="scroll-arrow"></div>
-        <span>{t('scrollDown')}</span>
+        <svg 
+          className="scroll-arrow-svg" 
+          width="40" 
+          height="40" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M12 4L12 20M12 20L18 14M12 20L6 14" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          />
+        </svg>
       </motion.div>
     </section>
   );

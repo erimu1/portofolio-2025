@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ScrollFadeIn, ScrollFadeInLeft, ScrollFadeInRight, ScrollScale } from './ScrollAnimationsAdapter';
+import { ScrollFadeIn, ScrollFadeInLeft, ScrollFadeInRight, ScrollScale } from './ScrollObserver';
 import { AnimatedHeading, AnimatedText, AnimatedSpan } from './AnimatedTypography';
 import '../styles/ScrollAnimations.css';
 import '../styles/ProjectDetails.css';

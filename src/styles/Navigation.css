@@ -1,25 +1,18 @@
 .nav-toggle {
   position: fixed;
   top: 20px;
-  left: 20px;
-  z-index: 1000;
-  background: none;
-  border: none;
-  cursor: pointer;
+  right: 20px;
+  width: 30px;
+  height: 22px;
+  max-width: 30px;
+  min-height: 22px;
+  max-height: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 22px;
-  min-width: 30px; /* Prevent horizontal stretching */
-  min-height: 22px; /* Prevent vertical stretching */
-  max-width: 30px; /* Ensure fixed width */
-  max-height: 22px; /* Ensure fixed height */
-  padding: 10px;
-  margin: -10px;
-  /* Increase touch target size while keeping visual size the same */
-  transition: all var(--transition-medium);
-  opacity: 0.9;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .nav-toggle:hover {

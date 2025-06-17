@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ScrollStagger, StaggerItem } from './ScrollAnimationsAdapter';
+import ScrollStagger from './ScrollStaggered';
 import '../styles/Testimonials.css';
 import { useLanguage } from '../contexts/LanguageContext';
+
+// Simple wrapper component to replace StaggerItem from ScrollAnimationsAdapter
+const StaggerItem = ({ children, ...props }) => (
+  <div {...props}>
+    {children}
+  </div>
+);
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

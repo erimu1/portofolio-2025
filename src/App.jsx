@@ -13,7 +13,6 @@ import './styles/ThemeToggle.css'
 import './styles/LanguageSwitcher.css'
 import './styles/ScrollAnimations.css'
 import './styles/ScrollToTop.css'
-import './styles/AnimationExamples.css'
 import './styles/personality.css'
 import './styles/projects-modern.css'
 import './styles/ProjectFilter.css'
@@ -35,7 +34,6 @@ import ProjectsPage from './pages/ProjectsPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import ProjectDetails from './components/ProjectDetails'
-import AnimationExamples from './pages/AnimationExamples'
 
 // AnimatePresence requires the location key
 const AnimatedRoutes = () => {
@@ -67,11 +65,6 @@ const AnimatedRoutes = () => {
         <Route path="/projects/:projectId" element={
           <PageTransition>
             <ProjectDetails />
-          </PageTransition>
-        } />
-        <Route path="/animation-examples" element={
-          <PageTransition>
-            <AnimationExamples />
           </PageTransition>
         } />
       </Routes>

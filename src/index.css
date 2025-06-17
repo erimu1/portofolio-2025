@@ -1,25 +1,26 @@
 :root {
   /* Color Variables - Light Theme (Default) */
-  --color-primary: #4a6bff;
-  --color-primary-light: #7a8eff;
-  --color-primary-dark: #3a4ccc;
-  --color-secondary: #34d399;
-  --color-secondary-light: #6ee7b7;
-  --color-accent: #f59e0b;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-background: #ffffff;
-  --color-background-alt: #f5f7ff;
+  --color-primary: #2563EB; /* Blue accent color for light mode */
+  --color-primary-light: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-secondary: #0047AB; /* Cobalt blue as secondary */
+  --color-secondary-light: #1E90FF;
+  --color-accent: #00008B; /* Dark blue as accent */
+  --color-text: #1F2937; /* Very dark gray, better than pure black */
+  --color-text-light: #6B7280; /* Gray-500 */
+  --color-text-disabled: #9CA3AF; /* Gray-400 */
+  --color-background: #FFFFFF; /* Clean white */
+  --color-background-alt: #F9FAFB; /* Soft off-white for separation */
   --color-background-dark: #121212;
   --color-border: #e1e4e8;
   
   /* Background Gradient Colors */
-  --bg-gradient-1: #4a6bff;
-  --bg-gradient-2: #34d399;
-  --bg-gradient-3: #f59e0b;
+  --bg-gradient-1: #2563EB; /* Medium blue */
+  --bg-gradient-2: #0047AB; /* Cobalt blue */
+  --bg-gradient-3: #00008B; /* Dark blue */
   
   /* Typography */
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-family: 'Inter', 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-size-base: 1rem;
   --font-size-sm: 0.875rem;
   --font-size-lg: 1.125rem;
@@ -251,17 +252,18 @@ button:focus-visible {
 
 /* Dark Theme */
 [data-theme='dark'] {
-  --color-primary: #7a8eff;
-  --color-primary-light: #9eabff;
-  --color-primary-dark: #4a6bff;
-  --color-secondary: #2bb380;
-  --color-secondary-light: #4fd0a0;
-  --color-accent: #e08c00;
-  --color-text: #e1e1e1;
-  --color-text-light: #b0b0b0;
-  --color-background: #121212;
-  --color-background-alt: #1e1e2e;
-  --color-border: #2a2a2a;
+  --color-primary: #3B82F6; /* Blue accent color for dark mode */
+  --color-primary-light: #60A5FA;
+  --color-primary-dark: #2563EB;
+  --color-secondary: #14B8A6; /* Teal as secondary */
+  --color-secondary-light: #2DD4BF;
+  --color-accent: #F59E0B; /* Amber as accent */
+  --color-text: #E0E0E0; /* Not pure white—softer on the eyes */
+  --color-text-light: #A0A0A0; /* Secondary text */
+  --color-text-disabled: #555555; /* Disabled text */
+  --color-background: #121212; /* Very dark gray, not pure black */
+  --color-background-alt: #1F1F1F; /* Slightly lighter for separation */
+  --color-border: #2A2A2A; /* Card/background elevation */
   
   /* Shadows for dark theme */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);

@@ -148,7 +148,7 @@
 }
 
 .skill-icon {
-  font-size: 3rem;
+  font-size: 3.5rem; /* Increased from 3rem */
   margin-bottom: 0.8rem;
   color: var(--color-primary, #0066ff);
   transition: color 0.3s ease;
