@@ -3,12 +3,10 @@ import { motion, useInView } from 'framer-motion';
 import ContactForm from './ContactForm';
 import '../styles/ContactForm.css';
 import { useLanguage } from '../contexts/LanguageContext';
-
 const Contact = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
   const { t } = useLanguage();
-  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,7 +17,6 @@ const Contact = () => {
       }
     }
   };
-  
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
@@ -31,10 +28,9 @@ const Contact = () => {
       }
     }
   };
-
   return (
     <section id="contact" ref={sectionRef}>
-      <motion.div 
+      <motion.div
         className="container"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -51,6 +47,4 @@ const Contact = () => {
     </section>
   );
 };
-
-
 export default Contact;

@@ -1,38 +1,23 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-
-// Create a context for language
 const LanguageContext = createContext();
-
-// Custom hook to use the language context
 export const useLanguage = () => useContext(LanguageContext);
-
-// Language provider component
 export const LanguageProvider = ({ children }) => {
-  // Initialize language state from localStorage or default to 'en'
   const [language, setLanguage] = useState(() => {
     const savedLanguage = localStorage.getItem('language');
     return savedLanguage || 'en';
   });
-
-  // Apply language when component mounts and when language changes
   useEffect(() => {
     document.documentElement.setAttribute('data-language', language);
     localStorage.setItem('language', language);
   }, [language]);
-
-  // Toggle between languages
   const toggleLanguage = () => {
     setLanguage(prevLanguage => prevLanguage === 'en' ? 'nl' : 'en');
   };
-
-  // Set a specific language
   const setSpecificLanguage = (lang) => {
     if (lang === 'en' || lang === 'nl') {
       setLanguage(lang);
     }
   };
-
-  // Translations object (can be expanded with more translations)
   const translations = {
     en: {
       home: 'Home',
@@ -91,18 +76,13 @@ export const LanguageProvider = ({ children }) => {
       showAllProjects: 'Toon Alle Projecten'
     }
   };
-
-  // Get translation for a key
   const t = (key) => {
     return translations[language][key] || key;
   };
-
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, setSpecificLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
 };
-
-// Export the context directly
 export { LanguageContext as default };

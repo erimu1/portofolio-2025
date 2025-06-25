@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-  
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  
   // Animation variants
   const formVariants = {
     hidden: { opacity: 0 },
@@ -22,7 +19,6 @@ const ContactForm = () => {
       }
     }
   };
-  
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -34,14 +30,12 @@ const ContactForm = () => {
       }
     }
   };
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
-    
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
@@ -50,51 +44,40 @@ const ContactForm = () => {
       });
     }
   };
-  
   const validateForm = () => {
     const newErrors = {};
-    
     // Name validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-    
     // Email validation
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
-    
     // Message validation
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     } else if (formData.message.trim().length < 10) {
       newErrors.message = 'Message should be at least 10 characters';
     }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
   const formRef = useRef(null);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (validateForm()) {
       setIsSubmitting(true);
-      
       // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
-        
         // Add success animation to form
         if (formRef.current) {
           formRef.current.classList.add('success-animation');
         }
-        
         // Reset form after successful submission
         setTimeout(() => {
           setFormData({
@@ -102,12 +85,10 @@ const ContactForm = () => {
             email: '',
             message: ''
           });
-          
           // Remove success animation class
           if (formRef.current) {
             formRef.current.classList.remove('success-animation');
           }
-          
           setTimeout(() => {
             setSubmitSuccess(false);
           }, 300);
@@ -115,7 +96,6 @@ const ContactForm = () => {
       }, 1500);
     }
   };
-  
   return (
     <motion.div
       className="contact-form-container"
@@ -124,7 +104,7 @@ const ContactForm = () => {
       variants={formVariants}
     >
       {submitSuccess ? (
-        <motion.div 
+        <motion.div
           className="success-message"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -147,7 +127,6 @@ const ContactForm = () => {
             />
             {errors.name && <span className="error-message">{errors.name}</span>}
           </motion.div>
-          
           <motion.div className="form-group" variants={itemVariants}>
             <label htmlFor="email">Email</label>
             <input
@@ -160,7 +139,6 @@ const ContactForm = () => {
             />
             {errors.email && <span className="error-message">{errors.email}</span>}
           </motion.div>
-          
           <motion.div className="form-group" variants={itemVariants}>
             <label htmlFor="message">Message</label>
             <textarea
@@ -173,7 +151,6 @@ const ContactForm = () => {
             ></textarea>
             {errors.message && <span className="error-message">{errors.message}</span>}
           </motion.div>
-          
           <motion.button
             type="submit"
             className="submit-btn"
@@ -193,5 +170,4 @@ const ContactForm = () => {
     </motion.div>
   );
 };
-
 export default ContactForm;

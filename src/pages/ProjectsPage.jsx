@@ -1,6 +1,5 @@
 import React from 'react';
 import Projects from '../components/Projects';
-
 const ProjectsPage = () => {
   return (
     <main>
@@ -8,5 +7,4 @@ const ProjectsPage = () => {
     </main>
   );
 };
-
 export default ProjectsPage;

@@ -1,4 +1,3 @@
-/* 3D Card Animation Styles - MindOffice inspired */
 .card-animation-container {
   position: absolute;
   width: 100%;
@@ -9,29 +8,24 @@
   z-index: 2;
   opacity: 0.9;
 }
-
 .card-animation-container.mindoffice-style {
   bottom: 20%;
   height: 80px;
 }
-
 .card-track {
   display: flex;
   width: fit-content;
   animation: scroll 30s linear infinite;
   gap: 20px;
 }
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
-  }  
+  }
   100% {
     transform: translateX(-100%);
   }
 }
-
-/* MindOffice style card design */
 .name-card {
   height: 100px;
   width: 300px;
@@ -40,17 +34,14 @@
   transform-style: preserve-3d;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
-
 .name-card.mindoffice-card {
   height: 80px;
   width: 250px;
   transition: transform 0.5s ease;
 }
-
 .name-card.mindoffice-card:hover {
   transform: translateY(-10px);
 }
-
 .name-card-inner {
   position: relative;
   width: 100%;
@@ -60,22 +51,19 @@
   transition: transform 0.5s;
   transform: rotateY(0deg) rotateX(0deg);
 }
-
 .name-card:hover .name-card-inner {
   transform: rotateY(0deg) rotateX(0deg);
 }
-
 .name-card-front {
   position: absolute;
   width: 100%;
   height: 100%;
-
   background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
+  box-shadow:
     0 5px 15px rgba(0, 0, 0, 0.1),
     inset 0 1px 1px rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -83,7 +71,6 @@
   -webkit-backdrop-filter: blur(5px);
   overflow: hidden;
 }
-
 .name-card-front h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -91,8 +78,6 @@
   color: white;
   text-transform: uppercase;
 }
-
-/* Subtle card shine effect */
 .name-card-front::before {
   content: '';
   position: absolute;
@@ -110,7 +95,6 @@
   animation: shimmer 4s infinite;
   pointer-events: none;
 }
-
 @keyframes shimmer {
   0% {
     transform: translateX(-100%) rotate(30deg);
@@ -119,7 +103,6 @@
     transform: translateX(100%) rotate(30deg);
   }
 }
-
 .name-card-front h2 {
   font-size: 2.8rem;
   font-weight: 700;
@@ -133,8 +116,6 @@
   position: relative;
   z-index: 2;
 }
-
-/* Improved card floating animation */
 @keyframes cardFloat {
   0% {
     transform: translateY(0);
@@ -146,8 +127,6 @@
     transform: translateY(0);
   }
 }
-
-/* Decorative box outlines */
 .bg-box-outline {
   position: absolute;
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -156,7 +135,6 @@
   opacity: 0.6;
   pointer-events: none;
 }
-
 .bg-box-1 {
   width: 150px;
   height: 150px;
@@ -166,7 +144,6 @@
   animation: rotate-box 40s linear infinite;
   border-color: var(--bg-gradient-1);
 }
-
 .bg-box-2 {
   width: 100px;
   height: 100px;
@@ -176,7 +153,6 @@
   animation: float-box 25s ease-in-out infinite alternate;
   border-color: var(--bg-gradient-2);
 }
-
 .bg-box-3 {
   width: 200px;
   height: 120px;
@@ -186,7 +162,6 @@
   animation: pulse-box 30s ease-in-out infinite;
   border-color: var(--bg-gradient-3);
 }
-
 @keyframes rotate-box {
   0% {
     transform: rotate(0deg);
@@ -195,7 +170,6 @@
     transform: rotate(360deg);
   }
 }
-
 @keyframes float-box {
   0% {
     transform: translateY(0) rotate(-10deg);
@@ -207,7 +181,6 @@
     transform: translateY(0) rotate(-10deg);
   }
 }
-
 @keyframes pulse-box {
   0% {
     transform: scale(1) rotate(5deg);
@@ -219,45 +192,35 @@
     transform: scale(1) rotate(5deg);
   }
 }
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .card-animation-container {
     height: 90px;
   }
-  
   .name-card {
     height: 80px;
     width: 400px;
   }
-  
   .name-card-front h2 {
     font-size: 2rem;
   }
-  
   .bg-box-1, .bg-box-2, .bg-box-3 {
     opacity: 0.4;
   }
 }
-
 @media (max-width: 480px) {
   .card-animation-container {
     height: 70px;
   }
-  
   .name-card {
     height: 60px;
     width: 280px;
   }
-  
   .name-card-front h2 {
     font-size: 1.5rem;
   }
-  
   .card-track {
     animation-duration: 20s;
   }
-  
   .bg-box-1, .bg-box-2, .bg-box-3 {
     opacity: 0.3;
     transform: scale(0.8);

@@ -9,36 +9,28 @@ import './styles/accessibility.css'
 import './styles/animations.css'
 import './styles/profile.css'
 import './styles/PageTransition.css'
-import './styles/ThemeToggle.css'
 import './styles/LanguageSwitcher.css'
 import './styles/ScrollAnimations.css'
 import './styles/ScrollToTop.css'
 import './styles/personality.css'
-import './styles/projects-modern.css'
+import './styles/projects.css'
 import './styles/ProjectFilter.css'
 import './styles/ProjectDetails.css'
 import './styles/glass-morphism.css'
 import './styles/animated-background.css'
-
-// Component imports
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import PageTransition from './components/PageTransition'
 import ScrollToTop from './components/ScrollToTop'
 import AnimatedBackground from './components/AnimatedBackground'
-
-// Page imports
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import ProjectDetails from './components/ProjectDetails'
-
-// AnimatePresence requires the location key
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -71,21 +63,13 @@ const AnimatedRoutes = () => {
     </AnimatePresence>
   );
 }
-
 const App = () => {
-  // Initialize spacing preference on page load
   useEffect(() => {
-    // Get saved spacing preference or default to 'normal'
     const savedSpacing = localStorage.getItem('spacing') || 'normal';
     document.documentElement.setAttribute('data-spacing', savedSpacing);
-    
-    // Add console log for debugging
     console.log('App component mounted');
   }, []);
-
-  // Add console log for debugging
   console.log('App component rendering');
-
   return (
     <LanguageProvider>
       <Router>
@@ -103,5 +87,4 @@ const App = () => {
     </LanguageProvider>
   )
 }
-
 export default App

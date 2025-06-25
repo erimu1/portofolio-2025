@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 // A collection of SVG illustrations to add personality to the website
 // These are inspired by the food truck and design elements in the reference image
-
 export const FoodTruckIcon = ({ width = 80, height = 80, className = '' }) => {
   return (
     <motion.svg
@@ -18,21 +16,21 @@ export const FoodTruckIcon = ({ width = 80, height = 80, className = '' }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       whileHover={{ scale: 1.05, rotate: 2 }}
     >
-      {/* Truck Body */}
-      <motion.path 
-        d="M10 65H75C78 65 80 63 80 60V30C80 27 78 25 75 25H20C15 25 10 30 10 35V65Z" 
+      {}
+      <motion.path
+        d="M10 65H75C78 65 80 63 80 60V30C80 27 78 25 75 25H20C15 25 10 30 10 35V65Z"
         fill="#4a9e2f"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       />
-      {/* Truck Window */}
+      {}
       <motion.rect x="15" y="35" width="20" height="15" rx="2" fill="#f5f5f5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       />
-      {/* Truck Wheels */}
+      {}
       <motion.circle cx="25" cy="75" r="10" fill="#333"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -43,7 +41,7 @@ export const FoodTruckIcon = ({ width = 80, height = 80, className = '' }) => {
         animate={{ scale: 1 }}
         transition={{ delay: 1, duration: 0.5, type: 'spring' }}
       />
-      {/* Food Sign */}
+      {}
       <motion.rect x="40" y="10" width="30" height="15" rx="2" fill="#ff7a3d"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 10, opacity: 1 }}
@@ -59,7 +57,6 @@ export const FoodTruckIcon = ({ width = 80, height = 80, className = '' }) => {
     </motion.svg>
   );
 };
-
 export const FlowerIcon = ({ width = 60, height = 60, className = '', color = '#ff8fa3' }) => {
   return (
     <motion.svg
@@ -74,7 +71,7 @@ export const FlowerIcon = ({ width = 60, height = 60, className = '', color = '#
       transition={{ duration: 0.5, ease: 'easeOut' }}
       whileHover={{ scale: 1.1, rotate: 5 }}
     >
-      {/* Flower Petals */}
+      {}
       <motion.path
         d="M50 30C55.5 30 60 25.5 60 20C60 14.5 55.5 10 50 10C44.5 10 40 14.5 40 20C40 25.5 44.5 30 50 30Z"
         fill={color}
@@ -103,7 +100,7 @@ export const FlowerIcon = ({ width = 60, height = 60, className = '', color = '#
         animate={{ scale: 1 }}
         transition={{ delay: 0.3, duration: 0.4, ease: 'easeOut' }}
       />
-      {/* Flower Center */}
+      {}
       <motion.circle
         cx="50"
         cy="40"
@@ -116,7 +113,6 @@ export const FlowerIcon = ({ width = 60, height = 60, className = '', color = '#
     </motion.svg>
   );
 };
-
 export const CraftedIcon = ({ width = 70, height = 40, className = '' }) => {
   return (
     <motion.svg
@@ -131,7 +127,7 @@ export const CraftedIcon = ({ width = 70, height = 40, className = '' }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       whileHover={{ scale: 1.05 }}
     >
-      {/* Background */}
+      {}
       <motion.rect
         width="140"
         height="80"
@@ -141,7 +137,7 @@ export const CraftedIcon = ({ width = 70, height = 40, className = '' }) => {
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.5, ease: [0.175, 0.885, 0.32, 1.275] }}
       />
-      {/* Text */}
+      {}
       <motion.text
         x="20"
         y="45"
@@ -157,5 +153,4 @@ export const CraftedIcon = ({ width = 70, height = 40, className = '' }) => {
     </motion.svg>
   );
 };
-
 export default { FoodTruckIcon, FlowerIcon, CraftedIcon };

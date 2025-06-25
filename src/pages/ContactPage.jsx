@@ -1,6 +1,5 @@
 import React from 'react';
 import Contact from '../components/Contact';
-
 const ContactPage = () => {
   return (
     <main>
@@ -8,5 +7,4 @@ const ContactPage = () => {
     </main>
   );
 };
-
 export default ContactPage;

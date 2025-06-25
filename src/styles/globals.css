@@ -1,0 +1,80 @@
+:root {
+  --primary: #0066ff;
+  --primary-light: #4d94ff;
+  --background: #ffffff;
+  --text: #1a1a1a;
+}
+body {
+  background: var(--background);
+  color: var(--text);
+}
+a,
+.highlight {
+  color: inherit;
+}
+.glass,
+.card,
+.section {
+  background: rgba(24, 24, 32, 0.95);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.45);
+  border: 1.5px solid #3182ce33;
+}
+button,
+.button,
+.btn,
+.hero-button,
+.cta-button,
+.filter-button,
+.glass-button {
+  color: #fff !important;
+  background: #2563eb !important;
+  border: none;
+}
+button:hover,
+.button:hover,
+.btn:hover,
+.hero-button:hover,
+.cta-button:hover,
+.filter-button:hover,
+.glass-button:hover {
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
+.button {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 2rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary {
+  background: #3182ce;
+  color: #181f2a;
+}
+.btn-primary:hover {
+  background: #2563eb;
+  color: #fff;
+}
+.button:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+}
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease;
+}
+.skill-icon:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .skill-icon {
+    width: 56px;
+    height: 56px;
+  }
+}

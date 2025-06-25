@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ScrollToTop.css';
-
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   // Show button when page is scrolled down
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
@@ -12,7 +10,6 @@ const ScrollToTop = () => {
       setIsVisible(false);
     }
   };
-
   // Set the top scroll position
   const scrollToTop = () => {
     window.scrollTo({
@@ -20,12 +17,10 @@ const ScrollToTop = () => {
       behavior: 'smooth'
     });
   };
-
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
-
   return (
     <button
       className={`scroll-to-top ${isVisible ? 'visible' : ''}`}
@@ -39,5 +34,4 @@ const ScrollToTop = () => {
     </button>
   );
 };
-
 export default ScrollToTop;

@@ -1,29 +1,20 @@
 :root {
-  /* Vibrant Color Palette inspired by the image */
   --color-trupaste-green: #4a9e2f;
   --color-trupaste-orange: #ff7a3d;
   --color-food-truck-yellow: #ffcb05;
   --color-buon-pink: #ff8fa3;
   --color-craft-blue: #3d85c6;
   --color-craft-brown: #8b4513;
-  
-  /* Typography Variables */
   --font-size-display: 3.5rem;
   --font-size-headline: 2.5rem;
   --line-height-display: 1.2;
   --line-height-headline: 1.6;
-  
-  /* Card Design Variables */
   --card-border-radius: 16px;
   --card-shadow-playful: 0 8px 30px rgba(0, 0, 0, 0.15);
   --card-transform-hover: translateY(-8px);
-  
-  /* Animation Variables */
   --bounce-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --swing-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-/* Playful Typography Styles */
 .project-details-header h1 {
   font-size: var(--font-size-display);
   line-height: var(--line-height-display);
@@ -37,21 +28,16 @@
   transform-origin: left center;
   animation: gentle-swing 5s var(--swing-transition) infinite alternate;
 }
-
-/* Enhanced Project Cards */
 .project-card {
   border-radius: var(--card-border-radius);
   overflow: hidden;
   box-shadow: var(--card-shadow-playful);
   transition: transform 0.4s var(--bounce-transition), box-shadow 0.4s ease;
 }
-
 .project-card:hover {
   transform: var(--card-transform-hover);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
-
-/* Vibrant Tags */
 .tag {
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -59,18 +45,14 @@
   border-radius: 30px;
   transition: all 0.3s var(--bounce-transition);
 }
-
 .tag:nth-child(1) { background-color: var(--color-trupaste-green); color: white; }
 .tag:nth-child(2) { background-color: var(--color-trupaste-orange); color: white; }
 .tag:nth-child(3) { background-color: var(--color-food-truck-yellow); color: #333; }
 .tag:nth-child(4) { background-color: var(--color-buon-pink); color: #333; }
 .tag:nth-child(5) { background-color: var(--color-craft-blue); color: white; }
-
 .tag:hover {
   transform: scale(1.1) rotate(-2deg);
 }
-
-/* Playful Buttons */
 .btn {
   border-radius: 30px;
   padding: 0.8rem 1.8rem;
@@ -82,7 +64,6 @@
   overflow: hidden;
   z-index: 1;
 }
-
 .btn::before {
   content: '';
   position: absolute;
@@ -94,27 +75,21 @@
   transition: width 0.3s ease;
   z-index: -1;
 }
-
 .btn:hover::before {
   width: 100%;
 }
-
 .btn-primary {
   background-color: var(--color-trupaste-green);
   border: none;
 }
-
 .btn-secondary {
   background-color: var(--color-craft-blue);
   border: none;
 }
-
-/* Project Gallery Enhancement */
 .main-image-container {
   border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
   overflow: hidden;
 }
-
 .gallery-nav {
   background-color: var(--color-trupaste-orange);
   width: 50px;
@@ -122,19 +97,14 @@
   font-size: 1.5rem;
   transition: transform 0.3s var(--bounce-transition), background-color 0.3s ease;
 }
-
 .gallery-nav:hover {
   transform: translateY(-50%) scale(1.2);
   background-color: var(--color-trupaste-green);
 }
-
-/* Animations */
 @keyframes gentle-swing {
   0% { transform: rotate(-1deg); }
   100% { transform: rotate(1deg); }
 }
-
-/* Tech List Enhancement */
 .tech-item {
   background-color: var(--color-craft-blue);
   color: white;
@@ -143,21 +113,16 @@
   border-radius: 30px;
   transition: all 0.3s var(--bounce-transition);
 }
-
 .tech-item:hover {
   transform: scale(1.1);
   background-color: var(--color-trupaste-green);
 }
-
-/* Feature List Enhancement */
 .feature-list li::before {
   content: '✓';
   color: var(--color-trupaste-green);
   font-size: 1.2rem;
   font-weight: bold;
 }
-
-/* Project Challenges Box */
 .project-challenges {
   border-left: 6px solid var(--color-trupaste-orange);
   background-color: rgba(255, 122, 61, 0.05);
@@ -165,70 +130,52 @@
   padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .project-challenges:hover {
   transform: translateX(5px);
   box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
 }
-
-/* Thumbnail Enhancement */
 .thumbnail {
   border-radius: 8px;
   transition: all 0.3s var(--bounce-transition);
 }
-
 .thumbnail:hover {
   transform: scale(1.1) rotate(-2deg);
 }
-
 .thumbnail.active {
   border: 3px solid var(--color-trupaste-green);
   transform: scale(1.1);
 }
-
-/* Section Styling from section-personality.css */
 .section-header-with-icon {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
-
 .section-icon {
   margin-left: 1rem;
 }
-
 .view-all-projects {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 2rem;
 }
-
 .crafted-icon {
   margin-right: 2rem;
 }
-
-/* Enhanced typography for better line height */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
-
 h1 {
   line-height: var(--line-height-display);
 }
-
 h2 {
   line-height: var(--line-height-headline);
 }
-
-/* Add more playful hover effects to buttons */
 .btn:hover {
   transform: translateY(-5px) scale(1.03);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-
-/* Add decorative elements to section corners */
 .project-details-section::before {
   content: '';
   position: absolute;
@@ -241,7 +188,6 @@ h2 {
   opacity: 0.6;
   pointer-events: none;
 }
-
 .project-details-section::after {
   content: '';
   position: absolute;
@@ -254,12 +200,9 @@ h2 {
   opacity: 0.6;
   pointer-events: none;
 }
-
-/* Add playful background patterns */
 .projects-grid {
   position: relative;
 }
-
 .projects-grid::before {
   content: '';
   position: absolute;
@@ -272,21 +215,16 @@ h2 {
   border-radius: 50%;
   z-index: -1;
 }
-
-/* Enhance the no-projects-message */
 .no-projects-message {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-
-/* Add playful animation to the back link arrow */
 .back-arrow {
   display: inline-block;
   transition: transform 0.3s var(--bounce-transition);
 }
-
 .back-arrow:hover {
   transform: translateX(-5px);
 }

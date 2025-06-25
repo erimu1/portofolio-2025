@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 // AnimatedHeading component for creating vibrant, playful headings
 export const AnimatedHeading = ({ children, color = 'gradient', size = 'large', className = '', ...props }) => {
   // Define size classes
@@ -10,7 +9,6 @@ export const AnimatedHeading = ({ children, color = 'gradient', size = 'large', 
     large: 'text-3xl md:text-4xl',
     xlarge: 'text-4xl md:text-5xl'
   };
-
   // Define color classes
   const colorStyles = {
     gradient: {
@@ -26,7 +24,6 @@ export const AnimatedHeading = ({ children, color = 'gradient', size = 'large', 
     pink: { color: 'var(--color-buon-pink)' },
     blue: { color: 'var(--color-craft-blue)' }
   };
-
   // Animation variants
   const headingVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -39,7 +36,6 @@ export const AnimatedHeading = ({ children, color = 'gradient', size = 'large', 
       }
     }
   };
-
   return (
     <motion.h2
       className={`font-bold ${sizeClasses[size]} ${className}`}
@@ -53,7 +49,6 @@ export const AnimatedHeading = ({ children, color = 'gradient', size = 'large', 
     </motion.h2>
   );
 };
-
 // AnimatedText component for paragraph text with subtle animations
 export const AnimatedText = ({ children, delay = 0, className = '', ...props }) => {
   return (
@@ -75,7 +70,6 @@ export const AnimatedText = ({ children, delay = 0, className = '', ...props }) 
     </motion.p>
   );
 };
-
 // AnimatedSpan for inline text highlights
 export const AnimatedSpan = ({ children, color = 'green', className = '', ...props }) => {
   const colorClasses = {
@@ -85,7 +79,6 @@ export const AnimatedSpan = ({ children, color = 'green', className = '', ...pro
     pink: 'text-[var(--color-buon-pink)]',
     blue: 'text-[var(--color-craft-blue)]'
   };
-
   return (
     <motion.span
       className={`font-bold ${colorClasses[color]} ${className}`}
@@ -96,5 +89,4 @@ export const AnimatedSpan = ({ children, color = 'green', className = '', ...pro
     </motion.span>
   );
 };
-
 export default { AnimatedHeading, AnimatedText, AnimatedSpan };

@@ -1,13 +1,4 @@
-/**
- * Animation Configuration
- * 
- * This file centralizes all animation settings for the portfolio website.
- * Modify these values to customize animations throughout the site.
- */
-
-// Page transition settings
 export const pageTransitions = {
-  // Animation variants for page transitions
   variants: {
     initial: {
       opacity: 0,
@@ -21,7 +12,6 @@ export const pageTransitions = {
       opacity: 0,
       y: -20
     },
-    // New slide variants
     slideInitial: {
       opacity: 0,
       x: 50
@@ -34,7 +24,6 @@ export const pageTransitions = {
       opacity: 0,
       x: -50
     },
-    // New scale variants
     scaleInitial: {
       opacity: 0,
       scale: 0.9
@@ -48,15 +37,11 @@ export const pageTransitions = {
       scale: 1.1
     }
   },
-  
-  // Transition settings
   transition: {
     type: 'tween',
     ease: 'anticipate',
     duration: 0.5
   },
-  
-  // Alternative transitions that can be selected
   alternatives: {
     smooth: {
       type: 'tween',
@@ -84,8 +69,6 @@ export const pageTransitions = {
       duration: 0.8
     }
   },
-  
-  // Preset combinations for quick implementation
   presets: {
     default: {
       variant: 'in',
@@ -105,59 +88,42 @@ export const pageTransitions = {
     }
   }
 };
-
-// Background animation settings
 export const backgroundAnimations = {
-  // Blob sizes
   blobSizes: {
     blob1: '700px',
     blob2: '600px',
     blob3: '550px',
     blob4: '650px'
   },
-  
-  // Blob colors with opacity
   blobColors: {
     blob1: 'rgba(74, 158, 47, 0.08)',  // Green - increased opacity
     blob2: 'rgba(255, 122, 61, 0.07)',   // Orange - increased opacity
     blob3: 'rgba(61, 133, 198, 0.06)',   // Blue - increased opacity
     blob4: 'rgba(255, 143, 163, 0.06)'   // Pink - increased opacity
   },
-  
-  // Animation durations
   animationDurations: {
     blob1: '35s',  // Slightly faster
     blob2: '45s',  // Slightly faster
     blob3: '55s',  // Slightly faster
     blob4: '40s'   // Slightly faster
   },
-  
-  // Animation paths - new feature for more dynamic movement
   animationPaths: {
     blob1: 'circular',
     blob2: 'figure8',
     blob3: 'wave',
     blob4: 'random'
   },
-  
-  // Parallax sensitivity
   parallaxSensitivity: 18, // Increased for more pronounced effect
   scrollParallaxSensitivity: 0.07 // Increased for more pronounced effect
 };
-
-// Enhanced scroll animation settings
 export const scrollAnimations = {
-  // Default threshold for intersection observer
   defaultThreshold: 0.15,
-  // Optional thresholds for different effects
   thresholds: {
     early: 0.05,     // Trigger animation earlier
     standard: 0.15,  // Default threshold
     late: 0.25,      // Trigger animation later
     custom: [0, 0.25, 0.5, 0.75, 1] // For more precise control
   },
-  
-  // Default animation durations
   durations: {
     fadeIn: 0.7,
     slideIn: 0.6,
@@ -166,8 +132,6 @@ export const scrollAnimations = {
     fast: 0.3,       // Quick animations
     slow: 1.0        // Slower, more dramatic animations
   },
-  
-  // Default animation delays
   delays: {
     staggered: 0.12,
     short: 0.06,    // Shorter delay for quick sequences
@@ -175,8 +139,6 @@ export const scrollAnimations = {
     long: 0.2,      // Longer delay for dramatic effect
     sequence: [0.1, 0.2, 0.3, 0.4, 0.5] // For precise sequencing
   },
-  
-  // Default animation easing
   easing: {
     standard: 'easeOut',
     bounce: [0.175, 0.885, 0.32, 1.275],
@@ -187,10 +149,7 @@ export const scrollAnimations = {
     accelerate: 'cubicIn',
     decelerate: 'cubicOut'
   },
-  
-  // Staggered animation variants
   staggered: {
-    // Animation types
     types: [
       'fade-in',
       'fade-in-up',
@@ -209,15 +168,12 @@ export const scrollAnimations = {
       'reveal-left',    // New animation type
       'reveal-right'    // New animation type
     ],
-    // Default settings
     defaults: {
       baseDelay: 0,
       staggerDelay: 0.1,
       duration: 0.5
     }
   },
-  
-  // Preset combinations for quick implementation
   presets: {
     subtle: {
       type: 'fade-in',
@@ -245,8 +201,6 @@ export const scrollAnimations = {
       threshold: 0.15
     }
   },
-  
-  // Responsive behavior
   responsive: {
     reduceMotion: true,  // Respect user's reduce motion settings
     mobile: {
@@ -255,14 +209,10 @@ export const scrollAnimations = {
     }
   }
 };
-
-// UI element animation settings
 export const uiAnimations = {
-  // Button hover animations
   buttons: {
     scale: 1.05,
     duration: 0.2,
-    // New effects
     effects: {
       glow: {
         boxShadow: '0 0 8px var(--color-primary, #0066ff)',
@@ -284,34 +234,26 @@ export const uiAnimations = {
       }
     }
   },
-  
-  // Card hover animations
   cards: {
     lift: -5,
     duration: 0.3,
     rotation: 0.5, // Subtle rotation on hover (degrees)
     scale: 1.02,   // Subtle scale on hover
     shadow: '0 10px 25px rgba(0, 0, 0, 0.1)', // Enhanced shadow on hover
-    // Transition timing
     transition: {
       type: 'spring',
       stiffness: 150,
       damping: 15
     }
   },
-  
-  // Input focus animations
   inputs: {
     borderColor: 'var(--color-primary)',
     boxShadow: '0 0 0 3px rgba(0, 102, 255, 0.25)',
     duration: 0.2,
-    // Enhanced focus effects
     focusScale: 1.01,
     labelMove: -5, // px to move label up on focus
     labelColor: 'var(--color-primary)'
   },
-  
-  // New navigation animations
   navigation: {
     linkHover: {
       underlineWidth: '100%',
@@ -331,8 +273,6 @@ export const uiAnimations = {
       }
     }
   },
-  
-  // New scroll-triggered animations
   scrollTriggers: {
     fadeUp: {
       opacity: [0, 1],
@@ -349,4 +289,4 @@ export const uiAnimations = {
       distance: 15 // px to move during animation
     }
   }
-};
+};

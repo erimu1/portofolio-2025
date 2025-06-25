@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import '../styles/accessibility.css'; // For visually-hidden class
 import '../styles/LanguageSwitcher.css'; // For language switcher animations
 import { useLanguage } from '../contexts/LanguageContext';
-
 const LanguageSwitcher = () => {
   // Use the language context
   const { language, toggleLanguage, t } = useLanguage();
-  
   // State to track animation
   const [isAnimating, setIsAnimating] = useState(false);
-
   const handleToggleLanguage = () => {
     setIsAnimating(true);
     // Delay language change to allow animation to play
@@ -19,10 +16,9 @@ const LanguageSwitcher = () => {
       setTimeout(() => setIsAnimating(false), 600);
     }, 300);
   };
-
   return (
-    <button 
-      onClick={handleToggleLanguage} 
+    <button
+      onClick={handleToggleLanguage}
       className={`language-toggle ${isAnimating ? 'animating' : ''} ${language}`}
       aria-label={t('switchToLanguage')}
       title={t('switchToLanguage')}
@@ -37,5 +33,4 @@ const LanguageSwitcher = () => {
     </button>
   );
 };
-
 export default LanguageSwitcher;

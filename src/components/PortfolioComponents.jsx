@@ -1,5 +1,4 @@
 import React from 'react';
-
 // Hero Component
 export const Hero = () => {
   return (
@@ -12,7 +11,6 @@ export const Hero = () => {
     </section>
   );
 };
-
 // Projects Component
 export const Projects = () => {
   // Sample project data - in a real app, this could come from an API or CMS
@@ -27,7 +25,6 @@ export const Projects = () => {
     },
     // You can add more projects here
   ];
-
   return (
     <section id="projects">
       <div className="container">
@@ -47,7 +44,6 @@ export const Projects = () => {
     </section>
   );
 };
-
 // About Component
 export const About = () => {
   return (
@@ -59,7 +55,6 @@ export const About = () => {
     </section>
   );
 };
-
 // Contact Component
 export const Contact = () => {
   const handleSubmit = (e) => {
@@ -68,7 +63,6 @@ export const Contact = () => {
     // For example, sending data to a backend API
     console.log('Form submitted');
   };
-
   return (
     <section id="contact">
       <div className="container">
@@ -83,7 +77,6 @@ export const Contact = () => {
     </section>
   );
 };
-
 // Footer Component
 export const Footer = () => {
   return (
@@ -94,7 +87,6 @@ export const Footer = () => {
     </footer>
   );
 };
-
 // Default export for Header (already created separately)
 export default {
   Hero,

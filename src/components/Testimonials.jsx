@@ -4,14 +4,12 @@ import { useInView } from 'react-intersection-observer';
 import ScrollStagger from './ScrollStaggered';
 import '../styles/Testimonials.css';
 import { useLanguage } from '../contexts/LanguageContext';
-
 // Simple wrapper component to replace StaggerItem from ScrollAnimationsAdapter
 const StaggerItem = ({ children, ...props }) => (
   <div {...props}>
     {children}
   </div>
 );
-
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -19,7 +17,6 @@ const Testimonials = () => {
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
   const autoPlayRef = useRef();
   const timeoutRef = useRef();
-
   // Sample testimonial data - in a real app, this could come from an API or CMS
   const testimonials = [
     {
@@ -50,7 +47,6 @@ const Testimonials = () => {
       rating: 4
     }
   ];
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -62,7 +58,6 @@ const Testimonials = () => {
       }
     }
   };
-
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
@@ -74,7 +69,6 @@ const Testimonials = () => {
       }
     }
   };
-
   // Carousel navigation
   const nextSlide = () => {
     if (isAnimating) return;
@@ -82,53 +76,45 @@ const Testimonials = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
-
   const prevSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
     setTimeout(() => setIsAnimating(false), 500);
   };
-
   const goToSlide = (index) => {
     if (isAnimating || index === currentIndex) return;
     setIsAnimating(true);
     setCurrentIndex(index);
     setTimeout(() => setIsAnimating(false), 500);
   };
-
   // Auto-play functionality
   useEffect(() => {
     autoPlayRef.current = () => {
       nextSlide();
     };
   }, [currentIndex]);
-
   useEffect(() => {
     const play = () => {
       timeoutRef.current = setTimeout(() => {
         autoPlayRef.current();
       }, 5000); // Change slide every 5 seconds
     };
-
     play();
-
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
   }, [currentIndex]);
-
   // Pause auto-play when hovering over carousel
   const pauseAutoPlay = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
   };
-
   const resumeAutoPlay = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -137,14 +123,12 @@ const Testimonials = () => {
       autoPlayRef.current();
     }, 5000);
   };
-
   // Trigger animation when in view
   useEffect(() => {
     if (inView) {
       controls.start('visible');
     }
   }, [controls, inView]);
-
   // Generate star rating
   const renderStars = (rating) => {
     return Array(5).fill(0).map((_, i) => (
@@ -153,9 +137,7 @@ const Testimonials = () => {
       </span>
     ));
   };
-
   const { t } = useLanguage();
-
   return (
     <section id="testimonials" ref={ref}>
       <ScrollStagger delay={0.2} staggerDelay={0.15}>
@@ -170,24 +152,22 @@ const Testimonials = () => {
             {t('testimonialSubtitle')}
           </p>
         </StaggerItem>
-        
         <StaggerItem>
-          <div 
+          <div
             className="testimonial-carousel"
             onMouseEnter={pauseAutoPlay}
             onMouseLeave={resumeAutoPlay}
           >
-            <button 
-              className="carousel-arrow prev" 
+            <button
+              className="carousel-arrow prev"
               onClick={prevSlide}
               aria-label="Previous testimonial"
             >
               &#10094;
             </button>
-            
             <div className="testimonial-container">
               {testimonials.map((testimonial, index) => (
-                <div 
+                <div
                   key={testimonial.id}
                   className={`testimonial-card ${index === currentIndex ? 'active' : ''}`}
                   style={{
@@ -216,9 +196,8 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
-            
-            <button 
-              className="carousel-arrow next" 
+            <button
+              className="carousel-arrow next"
               onClick={nextSlide}
               aria-label="Next testimonial"
             >
@@ -226,7 +205,6 @@ const Testimonials = () => {
             </button>
           </div>
         </StaggerItem>
-        
         <StaggerItem>
           <div className="carousel-dots">
             {testimonials.map((_, index) => (
@@ -244,5 +222,4 @@ const Testimonials = () => {
     </section>
   );
 };
-
 export default Testimonials;

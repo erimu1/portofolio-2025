@@ -1,6 +1,5 @@
 import React from 'react';
 import About from '../components/About';
-
 const AboutPage = () => {
   return (
     <main>
@@ -8,5 +7,4 @@ const AboutPage = () => {
     </main>
   );
 };
-
 export default AboutPage;

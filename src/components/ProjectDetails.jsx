@@ -5,13 +5,11 @@ import { ScrollFadeIn, ScrollFadeInLeft, ScrollFadeInRight, ScrollScale } from '
 import { AnimatedHeading, AnimatedText, AnimatedSpan } from './AnimatedTypography';
 import '../styles/ScrollAnimations.css';
 import '../styles/ProjectDetails.css';
-
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
-  
   // Sample project data - in a real app, this would come from an API or CMS
   const projectsData = [
     {
@@ -109,7 +107,6 @@ const ProjectDetails = () => {
       year: '2022'
     }
   ];
-
   useEffect(() => {
     // Simulate API fetch with a delay
     setLoading(true);
@@ -119,17 +116,14 @@ const ProjectDetails = () => {
       setLoading(false);
     }, 500);
   }, [projectId]);
-
   const nextImage = () => {
     if (!project) return;
     setActiveImage((prev) => (prev + 1) % project.images.length);
   };
-
   const prevImage = () => {
     if (!project) return;
     setActiveImage((prev) => (prev === 0 ? project.images.length - 1 : prev - 1));
   };
-
   if (loading) {
     return (
       <div className="project-details-loading">
@@ -138,7 +132,6 @@ const ProjectDetails = () => {
       </div>
     );
   }
-
   if (!project) {
     return (
       <div className="project-not-found">
@@ -148,7 +141,6 @@ const ProjectDetails = () => {
       </div>
     );
   }
-
   return (
     <section className="project-details-section">
       <div className="container">
@@ -156,14 +148,14 @@ const ProjectDetails = () => {
           <Link to="/projects" className="back-link">
             <span className="back-arrow">←</span> Back to Projects
           </Link>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.175, 0.885, 0.32, 1.275] }}
           >
             {project.title}
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="project-year"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -172,7 +164,6 @@ const ProjectDetails = () => {
             {project.year}
           </motion.p>
         </div>
-
         <div className="project-details-content">
           <div className="project-gallery">
             <div className="main-image-container">
@@ -181,10 +172,10 @@ const ProjectDetails = () => {
               </button>
               <div className="main-image">
                 {project.images.map((image, index) => (
-                  <img 
-                    key={index} 
-                    src={image} 
-                    alt={`${project.title} screenshot ${index + 1}`} 
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 1}`}
                     className={index === activeImage ? 'active' : ''}
                   />
                 ))}
@@ -195,8 +186,8 @@ const ProjectDetails = () => {
             </div>
             <div className="thumbnail-container">
               {project.images.map((image, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`thumbnail ${index === activeImage ? 'active' : ''}`}
                   onClick={() => setActiveImage(index)}
                 >
@@ -205,19 +196,17 @@ const ProjectDetails = () => {
               ))}
             </div>
           </div>
-
           <ScrollFadeIn>
             <div className="project-description">
               <AnimatedHeading color="green" size="medium">Overview</AnimatedHeading>
               <AnimatedText delay={0.2}>{project.fullDescription}</AnimatedText>
             </div>
           </ScrollFadeIn>
-
           <div className="project-details-grid">
             <ScrollFadeInLeft>
               <div className="project-technologies">
                 <AnimatedHeading color="blue" size="medium">Technologies Used</AnimatedHeading>
-                <motion.ul 
+                <motion.ul
                   className="tech-list"
                   initial="hidden"
                   animate="visible"
@@ -230,8 +219,8 @@ const ProjectDetails = () => {
                   }}
                 >
                   {project.technologies.map((tech, index) => (
-                    <motion.li 
-                      key={index} 
+                    <motion.li
+                      key={index}
                       className="tech-item"
                       variants={{
                         hidden: { opacity: 0, y: 10 },
@@ -245,11 +234,10 @@ const ProjectDetails = () => {
                 </motion.ul>
               </div>
             </ScrollFadeInLeft>
-
             <ScrollFadeInRight>
               <div className="project-features">
                 <AnimatedHeading color="orange" size="medium">Key Features</AnimatedHeading>
-                <motion.ul 
+                <motion.ul
                   className="feature-list"
                   initial="hidden"
                   animate="visible"
@@ -263,7 +251,7 @@ const ProjectDetails = () => {
                   }}
                 >
                   {project.features.map((feature, index) => (
-                    <motion.li 
+                    <motion.li
                       key={index}
                       variants={{
                         hidden: { opacity: 0, x: -20 },
@@ -278,7 +266,6 @@ const ProjectDetails = () => {
               </div>
             </ScrollFadeInRight>
           </div>
-
           <ScrollFadeIn>
             <div className="project-challenges">
               <AnimatedHeading color="yellow" size="medium">Challenges & Solutions</AnimatedHeading>
@@ -287,27 +274,26 @@ const ProjectDetails = () => {
               </AnimatedText>
             </div>
           </ScrollFadeIn>
-
-          <motion.div 
+          <motion.div
             className="project-links"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <motion.a 
-              href={project.demoLink} 
-              className="btn btn-primary" 
-              target="_blank" 
+            <motion.a
+              href={project.demoLink}
+              className="btn btn-primary"
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Live Demo
             </motion.a>
-            <motion.a 
-              href={project.githubLink} 
-              className="btn btn-secondary" 
-              target="_blank" 
+            <motion.a
+              href={project.githubLink}
+              className="btn btn-secondary"
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -320,5 +306,4 @@ const ProjectDetails = () => {
     </section>
   );
 };
-
 export default ProjectDetails;

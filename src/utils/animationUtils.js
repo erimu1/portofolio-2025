@@ -1,26 +1,12 @@
-/**
- * Animation Utilities
- * 
- * This file provides reusable animation hooks and components for UI elements.
- * It works with the centralized animation configuration to provide consistent animations.
- */
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { uiAnimations } from '../config/animationConfig';
-
-/**
- * Hook for creating hover animations on any element
- * @param {Object} options - Animation options
- * @returns {Object} - Animation props to spread on an element
- */
 export const useHoverAnimation = (options = {}) => {
   const {
     scale = uiAnimations.buttons.scale,
     duration = uiAnimations.buttons.duration,
     y = 0
   } = options;
-  
   return {
     whileHover: { 
       scale, 
@@ -32,19 +18,12 @@ export const useHoverAnimation = (options = {}) => {
     }
   };
 };
-
-/**
- * Hook for creating staggered animations for lists
- * @param {Object} options - Animation options
- * @returns {Object} - Animation variants and props
- */
 export const useStaggeredAnimation = (options = {}) => {
   const {
     staggerDelay = 0.1,
     duration = 0.5,
     distance = 20
   } = options;
-  
   return {
     container: {
       hidden: { opacity: 0 },
@@ -65,20 +44,12 @@ export const useStaggeredAnimation = (options = {}) => {
     }
   };
 };
-
-/**
- * Hook for creating scroll-triggered animations
- * @param {Object} options - Animation options
- * @returns {Object} - Animation props and ref
- */
 export const useScrollAnimation = (options = {}) => {
   const {
     threshold = 0.1,
     triggerOnce = true,
     animation = 'fadeUp' // 'fadeUp', 'fadeIn', 'scale', etc.
   } = options;
-  
-  // Animation variants based on type
   const getVariants = () => {
     switch (animation) {
       case 'fadeUp':
@@ -113,7 +84,6 @@ export const useScrollAnimation = (options = {}) => {
         };
     }
   };
-  
   return {
     variants: getVariants(),
     initial: 'hidden',
@@ -121,21 +91,13 @@ export const useScrollAnimation = (options = {}) => {
     viewport: { once: triggerOnce, threshold }
   };
 };
-
-/**
- * Hook for creating interactive card animations
- * @param {Object} options - Animation options
- * @returns {Object} - Animation props and state
- */
 export const useCardAnimation = (options = {}) => {
   const {
     lift = uiAnimations.cards.lift,
     duration = uiAnimations.cards.duration,
     shadow = '0 10px 20px rgba(0, 0, 0, 0.1)'
   } = options;
-  
   const [isHovered, setIsHovered] = useState(false);
-  
   return {
     style: {
       transition: `transform ${duration}s ease, box-shadow ${duration}s ease`,
@@ -146,13 +108,8 @@ export const useCardAnimation = (options = {}) => {
     onMouseLeave: () => setIsHovered(false)
   };
 };
-
-/**
- * Animated Button Component with hover effects
- */
 export const AnimatedButton = ({ children, className = '', ...props }) => {
   const hoverAnimation = useHoverAnimation();
-  
   return (
     <motion.button
       className={`animated-button ${className}`}
@@ -163,13 +120,8 @@ export const AnimatedButton = ({ children, className = '', ...props }) => {
     </motion.button>
   );
 };
-
-/**
- * Animated Card Component with hover effects
- */
 export const AnimatedCard = ({ children, className = '', ...props }) => {
   const cardAnimation = useCardAnimation();
-  
   return (
     <div
       className={`animated-card ${className}`}
@@ -179,4 +131,4 @@ export const AnimatedCard = ({ children, className = '', ...props }) => {
       {children}
     </div>
   );
-};
+};
