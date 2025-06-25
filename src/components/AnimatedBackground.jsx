@@ -15,26 +15,21 @@ const AnimatedBackground = ({
   const parallaxRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true);
   const squares = Array.from({ length: 10 });
-  // Handle parallax effect on mouse movement and scroll
   useEffect(() => {
     if (!enableParallax) return;
     const handleParallax = (e) => {
       if (!parallaxRef.current || !isVisible) return;
       const moveX = (e.clientX / window.innerWidth) * sensitivity;
       const moveY = (e.clientY / window.innerHeight) * sensitivity;
-      // Apply subtle movement to background elements based on mouse position
-      // Only apply to the parallax container to avoid interfering with blob animations
       const parallaxContainer = parallaxRef.current.querySelector('.parallax-bg');
       if (parallaxContainer) {
         parallaxContainer.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
       }
-      // Apply subtle movement to shapes and squares, not blobs
       const shapes = parallaxRef.current.querySelectorAll('.bg-shape, .bg-square');
       shapes.forEach((el, index) => {
-        const depth = index * 0.1 + 0.3; // Different depths for different elements
+        const depth = index * 0.1 + 0.3; 
         const translateX = moveX * depth;
         const translateY = moveY * depth;
-        // Get current transform and add parallax effect
         el.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${index * 5}deg)`;
       });
     };

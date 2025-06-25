@@ -7,7 +7,6 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(145deg, #f8fafc, #f0f5ff);
-  z-index: 10;
 }
 .hero-background {
   position: absolute;
@@ -15,7 +14,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
   overflow: hidden;
 }
 .background-grid-pattern {
@@ -24,7 +22,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   pointer-events: none;
   transform: rotate(0deg);
 }
@@ -150,7 +147,7 @@
   margin: 0 auto;
   padding: 0 50px;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 .hero-container.mindoffice-style {
   display: flex;
@@ -170,7 +167,7 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  z-index: 20;
+  z-index: 10;
 }
 .hero-text {
   max-width: 800px;
@@ -254,7 +251,7 @@
   height: 30vw;
   max-height: 450px;
   max-width: 450px;
-  z-index: 25;
+  z-index: 100;
   margin-left: 2rem;
   display: flex;
   justify-content: center;
@@ -277,7 +274,7 @@
   border: 4px solid #ffffff;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
-  z-index: 25;
+  z-index: 100;
   animation: floatProfile 6s ease-in-out infinite;
   background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), transparent);
   cursor: pointer;
@@ -293,7 +290,7 @@
   background: linear-gradient(135deg, #2563eb, #60a5fa);
   filter: blur(30px);
   opacity: 0.3;
-  z-index: 1;
+  z-index: 10;
   top: 5%;
   left: 5%;
 }
@@ -324,21 +321,8 @@
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
   }
 }
-/* Removed glitch animations while preserving all font styles */
-.profile-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 3px solid var(--color-primary-light);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  z-index: 25;
-  animation: floatProfile 6s ease-in-out infinite;
-  background: linear-gradient(45deg, var(--color-primary-light), transparent);
-  cursor: pointer;
-}
+
+
 @keyframes floatProfile {
   0% {
     transform: translateY(0px);
@@ -362,18 +346,7 @@
 .profile-image:hover img {
   transform: scale(1.05);
 }
-.profile-backdrop {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
-  filter: blur(20px);
-  opacity: 0.3;
-  z-index: 1;
-  top: 10px;
-  left: 10px;
-}
+
 .profile-image::before {
   content: '';
   position: absolute;
@@ -594,7 +567,7 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  z-index: 100;
+  z-index: 200;
   padding: 15px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
@@ -1117,18 +1090,4 @@
   .cards-row {
     margin-bottom: 0;
   }
-}
-.dark .floating-shape {
-  opacity: 0.15;
-  filter: blur(3vw);
-}
-.dark .hero-fullscreen {
-  background: var(--color-background-dark);
-}
-.dark .scroll-arrow {
-  border-color: var(--color-primary-light);
-}
-.dark .profile-image::before {
-  opacity: 0.5;
-  box-shadow: 0 0 3vw rgba(0, 102, 255, 0.3);
 }
