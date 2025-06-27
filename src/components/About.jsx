@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedBackground from './AnimatedBackground';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/about.css';
 
 const About = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="about-section">
       <AnimatedBackground />
@@ -15,51 +18,79 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>About Me</h2>
+          <h2>{t('aboutMe')}</h2>
           <p className="about-description">
-            I'm a passionate frontend developer with a keen eye for design and user experience. 
-            I specialize in creating beautiful, functional, and accessible web applications 
-            that deliver exceptional user experiences.
+            {t('aboutDescription')}
           </p>
+          
+          <div className="cv-download-section">
+            <a 
+              href="/cv.pdf" 
+              download="CV-Erim-Uludag.pdf"
+              className="cv-download-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              </svg>
+              {t('downloadCV')}
+            </a>
+          </div>
           
           <div className="skills-grid">
             <div className="skill-category">
-              <h3>Frontend Development</h3>
+              <h3>{t('frontendDevelopmentSkills')}</h3>
               <ul>
-                <li>React.js</li>
-                <li>JavaScript (ES6+)</li>
+                <li>React</li>
+                <li>JavaScript</li>
                 <li>HTML5 & CSS3</li>
-                <li>Responsive Design</li>
+                <li>PHP</li>
+                <li>Tailwind CSS</li>
+                <li>Bootstrap</li>
+                <li>C#</li>
+                <li>Laravel</li>
+                <li>Electron</li>
+                <li>Python</li>
               </ul>
             </div>
             
             <div className="skill-category">
-              <h3>UI/UX Design</h3>
+              <h3>{t('uiUxDesignSkills')}</h3>
               <ul>
                 <li>User Interface Design</li>
                 <li>Interaction Design</li>
                 <li>Prototyping</li>
                 <li>Wireframing</li>
+                <li>Usability Testing</li>
+                <li>Responsive Design</li>
+                <li>Lo-fi/Hi-fi Prototyping</li>
               </ul>
             </div>
             
             <div className="skill-category">
-              <h3>Tools & Technologies</h3>
+              <h3>{t('toolsTechnologies')}</h3>
               <ul>
                 <li>Git & GitHub</li>
                 <li>VS Code</li>
                 <li>Figma</li>
-                <li>npm/yarn</li>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>Word</li>
+                <li>PowerPoint</li>
+                <li>Trello</li>
+                <li>LottieFiles</li>
               </ul>
             </div>
 
             <div className="skill-category">
-              <h3>Hobbies</h3>
+              <h3>{t('hobbies')}</h3>
               <ul>
-                <li>Photography</li>
-                <li>Hiking</li>
-                <li>Reading</li>
-                <li>Playing Guitar</li>
+                <li>Gaming</li>
+                <li>Basketball</li>
+                <li>Baseball</li>
+                <li>Coding</li>
+                <li>Anime</li>
               </ul>
             </div>
           </div>
@@ -71,29 +102,21 @@ const About = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3>Experience</h3>
+          <h3>{t('experience')}</h3>
           <div className="timeline">
             <div className="timeline-item">
               <div className="timeline-date">2023 - Present</div>
               <div className="timeline-content">
-                <h4>Senior Frontend Developer</h4>
-                <p>Leading frontend development for modern web applications</p>
+                <h4>Student all-round software developer</h4>
+                <p>Student in Grafisch lyceum Rotterdam</p>
               </div>
             </div>
             
             <div className="timeline-item">
-              <div className="timeline-date">2021 - 2023</div>
+              <div className="timeline-date">2021 - 2022</div>
               <div className="timeline-content">
-                <h4>UI/UX Developer</h4>
-                <p>Designed and developed user interfaces for various clients</p>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-date">2019 - 2021</div>
-              <div className="timeline-content">
-                <h4>Frontend Developer</h4>
-                <p>Created responsive and interactive web applications</p>
+                <h4>Vakken vuller</h4>
+                <p>Vakken vuller in het vers afdeling Dirk.</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+
 const ContactForm = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -8,166 +10,164 @@ const ContactForm = () => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  // Animation variants
-  const formVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut'
-      }
-    }
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: ''
-      });
-    }
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const validateForm = () => {
     const newErrors = {};
-    // Name validation
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t('nameRequired');
     }
-    // Email validation
+
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = t('emailRequired');
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = t('emailInvalid');
     }
-    // Message validation
+
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t('messageRequired');
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message should be at least 10 characters';
+      newErrors.message = t('messageLength');
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const formRef = useRef(null);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        // Add success animation to form
-        if (formRef.current) {
-          formRef.current.classList.add('success-animation');
-        }
-        // Reset form after successful submission
-        setTimeout(() => {
-          setFormData({
-            name: '',
-            email: '',
-            message: ''
-          });
-          // Remove success animation class
-          if (formRef.current) {
-            formRef.current.classList.remove('success-animation');
-          }
-          setTimeout(() => {
-            setSubmitSuccess(false);
-          }, 300);
-        }, 3000);
-      }, 1500);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Create a mailto link to send email directly
+      const subject = encodeURIComponent(`Portfolio Contact: Message from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n\n` +
+        `Message:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:erimuludag39@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Open the email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error creating email:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="contact-form-success">
+        <div className="success-icon">✓</div>
+        <h3>{t('thankYouMessage')}</h3>
+        <p>{t('responsePromise')}</p>
+      </div>
+    );
+  }
+
   return (
-    <motion.div
-      className="contact-form-container"
-      initial="hidden"
-      animate="visible"
-      variants={formVariants}
-    >
-      {submitSuccess ? (
-        <motion.div
-          className="success-message"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h3>Thank you for your message!</h3>
-          <p>I'll get back to you as soon as possible.</p>
-        </motion.div>
-      ) : (
-        <form onSubmit={handleSubmit} className="contact-form">
-          <motion.div className="form-group" variants={itemVariants}>
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={errors.name ? 'error' : ''}
-            />
-            {errors.name && <span className="error-message">{errors.name}</span>}
-          </motion.div>
-          <motion.div className="form-group" variants={itemVariants}>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={errors.email ? 'error' : ''}
-            />
-            {errors.email && <span className="error-message">{errors.email}</span>}
-          </motion.div>
-          <motion.div className="form-group" variants={itemVariants}>
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="5"
-              className={errors.message ? 'error' : ''}
-            ></textarea>
-            {errors.message && <span className="error-message">{errors.message}</span>}
-          </motion.div>
-          <motion.button
-            type="submit"
-            className="submit-btn"
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className="loading-spinner"></span>
-            ) : (
-              'Send Message'
-            )}
-          </motion.button>
-        </form>
-      )}
-    </motion.div>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="name">{t('name')}</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder={t('namePlaceholder')}
+          className={errors.name ? 'error' : ''}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+        />
+        {errors.name && (
+          <span id="name-error" className="error-message" role="alert">
+            {errors.name}
+          </span>
+        )}
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email">{t('email')}</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder={t('emailPlaceholder')}
+          className={errors.email ? 'error' : ''}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+        />
+        {errors.email && (
+          <span id="email-error" className="error-message" role="alert">
+            {errors.email}
+          </span>
+        )}
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="message">{t('message')}</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          placeholder={t('messagePlaceholder')}
+          rows="5"
+          className={errors.message ? 'error' : ''}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+        />
+        {errors.message && (
+          <span id="message-error" className="error-message" role="alert">
+            {errors.message}
+          </span>
+        )}
+      </div>
+
+      <button 
+        type="submit" 
+        className="submit-button"
+        disabled={isSubmitting}
+        aria-describedby="submit-status"
+      >
+        {isSubmitting ? t('sending') : t('sendMessage')}
+      </button>
+    </form>
   );
 };
+
 export default ContactForm;

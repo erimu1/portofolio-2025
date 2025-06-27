@@ -7,14 +7,11 @@ import './styles/Navigation.css'
 import './styles/responsive.css'
 import './styles/accessibility.css'
 import './styles/animations.css'
-import './styles/profile.css'
 import './styles/PageTransition.css'
 import './styles/LanguageSwitcher.css'
 import './styles/ScrollAnimations.css'
 import './styles/ScrollToTop.css'
-import './styles/personality.css'
 import './styles/projects.css'
-import './styles/ProjectFilter.css'
 import './styles/ProjectDetails.css'
 import './styles/glass-morphism.css'
 import './styles/animated-background.css'
@@ -65,10 +62,9 @@ const AnimatedRoutes = () => {
 }
 const App = () => {
   useEffect(() => {
-    const savedSpacing = localStorage.getItem('spacing') || 'normal';
-    document.documentElement.setAttribute('data-spacing', savedSpacing);
     console.log('App component mounted');
   }, []);
+  
   console.log('App component rendering');
   return (
     <LanguageProvider>

@@ -22,13 +22,6 @@
   .controls-container {
     margin-left: auto;
   }
-  .spacing-label {
-    display: none;
-  }
-  .spacing-option {
-    width: 28px;
-    height: 28px;
-  }
 }
 @media (max-width: 480px) {
   header h1 {
@@ -40,11 +33,6 @@
   }
   .nav-sidebar {
     width: 250px;
-  }
-  .spacing-option {
-    width: 24px;
-    height: 24px;
-    font-size: 0.8rem;
   }
   .project-grid {
     grid-template-columns: 1fr;
@@ -81,18 +69,6 @@
   a {
     min-height: 44px;
     min-width: 44px;
-  }
-  .spacing-options,
-  .theme-toggle {
-    gap: var(--spacing-sm);
-  }
-  .theme-toggle,
-  .spacing-option {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .controls-container {
     display: flex;
@@ -157,6 +133,8 @@ footer {
   margin-top: 0.7em;
   display: flex;
   gap: 1.2em;
+  position: relative;
+  left: 6.6vw;
 }
 .footer-socials a {
   color: #e0e7ef;

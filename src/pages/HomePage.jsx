@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import About from '../components/About';
-import Testimonials from '../components/Testimonials';
+import SimpleAnimation from '../components/SimpleAnimation';
 import Contact from '../components/Contact';
 import { ScrollFadeIn, ScrollFadeInLeft, ScrollFadeInRight } from '../components/ScrollObserver';
 const HomePage = () => {
@@ -46,7 +46,7 @@ const HomePage = () => {
       </ScrollFadeInLeft>
       <ScrollFadeInRight>
         <section className="section-animate slide-in-right">
-          <Testimonials />
+          <SimpleAnimation />
         </section>
       </ScrollFadeInRight>
       <ScrollFadeIn>

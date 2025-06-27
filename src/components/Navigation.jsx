@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navigation.css';
 import LanguageSwitcher from './LanguageSwitcher';
-import SpacingControl from './SpacingControl';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Navigation = () => {
@@ -23,18 +22,18 @@ const Navigation = () => {
   }, [isOpen]);
 
   return (
-    <nav className="nav-container nav-left" aria-label="Main navigation">
+    <nav className="nav-container" aria-label="Main navigation">
       <button
-        className="nav-toggle nav-toggle-left"
-        aria-label="Open menu"
+        className={`nav-toggle ${isOpen ? 'hidden' : ''}`}
+        aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="nav-toggle-icon" />
+        <span className={`nav-toggle-icon ${isOpen ? 'open' : ''}`} />
       </button>
       {isOpen && <div className="nav-overlay" onClick={() => setIsOpen(false)} aria-hidden="true"></div>}
       <aside className={`nav-sidebar${isOpen ? ' open' : ''}`} role="navigation">
-        <div className="nav-header improved-header">
+        <div className="nav-header">
           <span className="nav-title">Erim Uludağ</span>
         </div>
         <ul className="nav-items">
@@ -43,8 +42,7 @@ const Navigation = () => {
           <li><Link to="/about" tabIndex={isOpen ? 0 : -1}>{t('about')}</Link></li>
           <li><Link to="/contact" tabIndex={isOpen ? 0 : -1}>{t('contact')}</Link></li>
         </ul>
-        <div className="nav-controls nav-controls-col">
-          <SpacingControl />
+        <div className="nav-controls">
           <LanguageSwitcher />
         </div>
       </aside>
