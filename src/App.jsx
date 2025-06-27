@@ -68,7 +68,7 @@ const App = () => {
   console.log('App component rendering');
   return (
     <LanguageProvider>
-      <Router basename="/portofolio-2025">
+      <Router basename={process.env.NODE_ENV === 'production' ? '/portofolio-2025' : ''}>
         <div className="app">
           <AnimatedBackground />
           <div style={{ position: 'relative', zIndex: 10 }}>
